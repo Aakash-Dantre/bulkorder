@@ -10,6 +10,7 @@ export default class  LoginTemplate extends React.Component {
             username: '',
             email: '',
             password:''
+      
         }
    		this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -30,7 +31,7 @@ export default class  LoginTemplate extends React.Component {
     }
 	onSubmit(e) {
         e.preventDefault();
-
+        console.log('sex')
         const newUser = {
             username: this.state.username,
             email: this.state.email,
@@ -40,23 +41,74 @@ export default class  LoginTemplate extends React.Component {
 	        if (this.props.user=="user")
 	        {
 		        axios.post('http://localhost:4000/adduser', newUser)
-		             .then(res => console.log(res.data));
+		             .then(res => {
+                  if(res.data.success==false)
+                  {
+                      document.getElementById("AfterSubmit").innerHTML = "email already exist" ;
+
+                  }
+                  else{
+                      document.getElementById("AfterSubmit").innerHTML = "REGISTERED";
+                  }
+                 })
+                 .catch(function(error) {
+                 console.log(error);
+             })
+
 		    }
 		    else
 		    {
 	   			axios.post('http://localhost:4000/addvendor', newUser)
-		             .then(res => console.log(res.data));
+		             .then(res => {
+                  if(res.data.success==false)
+                  {
+                      document.getElementById("AfterSubmit").innerHTML = "email already exist";
+
+                  }
+                  else{
+                      document.getElementById("AfterSubmit").innerHTML = "REGISTERED";
+                  }
+                 })
+                 .catch(function(error) {
+                 console.log(error);
+             })
+
 		    }    
-		else{
+		  else{
 			if (this.props.user=="user")
 	        {
 		        axios.post('http://localhost:4000/checkuser', newUser)
-		             .then(res => console.log(res.data));
+		             .then(res => {
+                   if(res.data.success==true)
+                   {
+                      let lol=  {...res.data._doc,type:'user'}
+                      localStorage.clear()
+                      localStorage.setItem('mydata',JSON.stringify(lol))
+                      window.location.assign('/dashboard')
+                   }
+                   else{
+                      document.getElementById("AfterSubmit").innerHTML = "LOGIN FAILED";
+                   }
+                 })
+                 
 		    }
 		    else
 		    {
 	   			axios.post('http://localhost:4000/checkvendor', newUser)
-		             .then(res => console.log(res.data));
+		             .then(res => 
+                 {
+                   if(res.data.success==true)
+                   {
+                      let lol=  {...res.data._doc,type:'vendor'}
+                      localStorage.clear()
+                      localStorage.setItem('mydata',JSON.stringify(lol))
+                      window.location.assign('/dashboard')
+                   }
+                   else{
+                    console.log(res)
+                      document.getElementById("AfterSubmit").innerHTML = "LOGIN FAILED";
+                   }
+                 });
 		    }    
 		}
         this.setState({
@@ -71,8 +123,8 @@ export default class  LoginTemplate extends React.Component {
 
  		return(
   			<div>
-                <form onSubmit={this.onSubmit}>
-                    <div style={{display:hide}} className="form-group">        {/*hidding for login*/}
+             <form onSubmit={this.onSubmit}>
+                    <div style={{display:hide}} className="form-group">        
                         <label>Username: </label>
                         <input type="text" 
                                className="form-control" 
@@ -86,6 +138,7 @@ export default class  LoginTemplate extends React.Component {
                                className="form-control" 
                                value={this.state.email}
                                onChange={this.onChangeEmail}
+                               required
 
                                />  
                     </div>
@@ -95,11 +148,16 @@ export default class  LoginTemplate extends React.Component {
                                className="form-control" 
                                value={this.state.password}
                                onChange={this.onChangePassword}
+                               required
+
                                />  
                     </div>
                     
                     <div className="form-group">
                         <input type="submit" value="Create User" className="btn btn-primary"/>
+                    </div>
+                    <div id ="AfterSubmit">
+
                     </div>
                 </form>
             </div>

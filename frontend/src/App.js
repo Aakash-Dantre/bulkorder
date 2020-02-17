@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css"
+import Dashboard from "./components/dash"
 
 import User from './components/user-login'
 
@@ -31,6 +32,7 @@ function App() {
        
         <Route path="/user" component={() => <User value="user"/>}/>
         <Route path="/vendor" component={() => <User value="vendor"/>}/>
+        <Route path="/dashboard" component={() => <Dashboard />}/>
 
       </div>
     </Router>

@@ -1,5 +1,6 @@
 import React from "react"
 import LoginTemplate from "./login"
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 function User(props){
@@ -26,6 +27,7 @@ function User(props){
        
         <Route path={pathl} component={() => <LoginTemplate user={props.value} mode="login"/>}/>
         <Route path={pathr} component={() => <LoginTemplate user={props.value} mode="register"/>}/>
+
 
       </div>
     </Router>
