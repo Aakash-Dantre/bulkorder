@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/bulkorder/static/css/main.2fb7ba53.chunk.css",
+    "main.js": "/bulkorder/static/js/main.b5c9efd0.chunk.js",
+    "main.js.map": "/bulkorder/static/js/main.b5c9efd0.chunk.js.map",
+    "runtime-main.js": "/bulkorder/static/js/runtime-main.4ca18952.js",
+    "runtime-main.js.map": "/bulkorder/static/js/runtime-main.4ca18952.js.map",
+    "static/css/2.47e06e2e.chunk.css": "/bulkorder/static/css/2.47e06e2e.chunk.css",
+    "static/js/2.9cbe4ee7.chunk.js": "/bulkorder/static/js/2.9cbe4ee7.chunk.js",
+    "static/js/2.9cbe4ee7.chunk.js.map": "/bulkorder/static/js/2.9cbe4ee7.chunk.js.map",
+    "index.html": "/bulkorder/index.html",
+    "precache-manifest.7ef925aac40b067f2ff06d97569904a3.js": "/bulkorder/precache-manifest.7ef925aac40b067f2ff06d97569904a3.js",
+    "service-worker.js": "/bulkorder/service-worker.js",
+    "static/css/2.47e06e2e.chunk.css.map": "/bulkorder/static/css/2.47e06e2e.chunk.css.map",
+    "static/css/main.2fb7ba53.chunk.css.map": "/bulkorder/static/css/main.2fb7ba53.chunk.css.map",
+    "static/js/2.9cbe4ee7.chunk.js.LICENSE.txt": "/bulkorder/static/js/2.9cbe4ee7.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ca18952.js",
+    "static/css/2.47e06e2e.chunk.css",
+    "static/js/2.9cbe4ee7.chunk.js",
+    "static/css/main.2fb7ba53.chunk.css",
+    "static/js/main.b5c9efd0.chunk.js"
+  ]
+}
